@@ -1,0 +1,39 @@
+<div class="widget widget_search">
+    <form>
+        <input class="form-control js-search-input" type="search" placeholder="{{ 'article.search' | trans }}">
+        <button class="search-button" type="submit">
+            <span class="icon-magnifier icons"></span>
+        </button>
+    </form>
+    <div class="js-search-results"></div>
+</div>
+<div class="widget widget_categories">
+    <div class="widget-title">
+        {{ 'article.categories' | trans }}
+    </div>
+    <ul>
+        {% for category in categories | sort((a, b) => a.name <=> b.name) %}
+            <li>
+                <a href="#">
+                    {{ category.name }}
+                </a>
+                <span class="float-right">
+                    {{ category.articles | length }}
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="widget widget_tag_cloud">
+    <div class="widget-title">
+        {{ 'article.tags' | trans }}
+    </div>
+    <div class="tagcloud">
+        {% for tag in tags %}
+            <a href="#">
+                {{ tag.name }}
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{{ dump(categories) }}

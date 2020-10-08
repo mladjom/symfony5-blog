@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block main %}
+
+    {% for article in articles %}
+        <article class="post">
+            <div class="text-center post-header">
+                <a class="badge badge-custom" href="#" title="">{{ article.category }}</a>
+                <h2 class="post-title">
+                    <a href="{{ path('article_show', {slug: article.slug}) }}" title="">
+                        {{ article.title }}
+                    </a>
+                </h2>
+                <span class="post-meta">
+                    <span class="post-date">
+                        {{ article.createdAt ? article.createdAt|date('m d, Y') : '' }}
+                    </span>
+                    <i class="icon-star icons"></i>
+                    <span class="reading-time" title="Estimated read time">
+                        {% set numberOfWords = article.content|split(' ')|length / 200 %}
+                        {{ numberOfWords | round(0, 'ceil') }} {{ 'article.min_read' | trans }}
+                    </span>
+                </span>
+            </div>
+            <div class="post-content">
+                <p>
+                    {{ article.content|striptags|length > 278 ? article.content|striptags|slice(0, 278) ~ '...' : article.content|striptags }}
+                </p>
+            </div>
+            <div class="text-center">
+                <a href="{{ path('article_show', {slug: article.slug}) }}" class="btn btn-outline-custom">
+                    {{ 'article.read_more' | trans }}
+                    <i class="mdi mdi-arrow-right"></i>
+                </a>
+            </div>
+        </article>
+        {#        {% for tag in article.tags %}#}
+        {#            <span class="mb-2 mb-md-0 badge badge-secondary"><a class="text-white" href="">{{ tag.name }}</a></span>#}
+        {#        {% endfor %}#}
+        {#        {{ article.id }}#}
+        {#        {{ article.published ? 'Yes' : 'No' }}#}
+
+        {#                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
+
+
+    {% else %}
+
+        <div class="well">{{ 'article.no_articles_found' | trans }}</div>
+
+    {% endfor %}
+
+
+
+    {{ dump(articles) }}
+        {{ knp_pagination_render(articles) }}
+{% endblock %}

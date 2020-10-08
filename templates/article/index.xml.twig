@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>{{ 'rss.title'|trans }}</title>
+        <description>{{ 'rss.description'|trans }}</description>
+        <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
+        <link>{{ url('article_index') }}</link>
+
+        {% for article in articles %}
+            <item>
+                <title>{{ article.title }}</title>
+            </item>
+        {% endfor %}
+
+    </channel>
+</rss>

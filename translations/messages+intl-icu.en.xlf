@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="pcWhXux" resname="homepage">
+        <source>homepage</source>
+        <target>Homepage</target>
+      </trans-unit>
+      <trans-unit id="UoOv6mx" resname="menu.homepage">
+        <source>menu.homepage</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="tBiciyR" resname="menu.test">
+        <source>menu.test</source>
+        <target>__menu.test</target>
+      </trans-unit>
+      <trans-unit id="wvvYSw_" resname="menu.admin">
+        <source>menu.admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="rjDqmQR" resname="menu.user">
+        <source>menu.user</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="wBTFKFR" resname="menu.logout">
+        <source>menu.logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="1slVsoT" resname="menu.register">
+        <source>menu.register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="S92egy5" resname="title.sign_in">
+        <source>title.sign_in</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="Y7ajNNN" resname="placeholder.email">
+        <source>placeholder.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="xgYhRkc" resname="placeholder.password">
+        <source>placeholder.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="B0loISu" resname="label.remember_me">
+        <source>label.remember_me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="z2pPSYV" resname="action.sign_in">
+        <source>action.sign_in</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="Bn6yTIX" resname="action.forgot_password">
+        <source>action.forgot_password</source>
+        <target>Forgot your password?</target>
+      </trans-unit>
+      <trans-unit id="cD8eh30" resname="action.no_account">
+        <source>action.no_account</source>
+        <target>Don't have an account?</target>
+      </trans-unit>
+      <trans-unit id="DF34uM2" resname="http_error.name">
+        <source>http_error.name</source>
+        <target>Error {status_code, number}!</target>
+      </trans-unit>
+      <trans-unit id="e3w.2Rf" resname="http_error.description">
+        <source>http_error.description</source>
+        <target>There was an unknown error (HTTP {status_code, number}) that prevented to complete your request.</target>
+      </trans-unit>
+      <trans-unit id="ru5FEGk" resname="http_error.suggestion">
+        <source>http_error.suggestion</source>
+        <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="Qn5rwdU" resname="http_error_403.description">
+        <source>http_error_403.description</source>
+        <target>You don't have permission to access to this resource.</target>
+      </trans-unit>
+      <trans-unit id="zDeeh7L" resname="http_error_403.suggestion">
+        <source>http_error_403.suggestion</source>
+        <target>Ask your manager or system administrator to grant you access to this resource.</target>
+      </trans-unit>
+      <trans-unit id="_W1eNz2" resname="http_error_404.description">
+        <source>http_error_404.description</source>
+        <target>We couldn't find the page you requested.</target>
+      </trans-unit>
+      <trans-unit id="MWNS5dg" resname="http_error_404.suggestion">
+        <source>http_error_404.suggestion</source>
+        <target><![CDATA[Check out any misspelling in the URL or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="ZYXSW95" resname="http_error_500.description">
+        <source>http_error_500.description</source>
+        <target>There was an internal server error.</target>
+      </trans-unit>
+      <trans-unit id="VVs_J1c" resname="http_error_500.suggestion">
+        <source>http_error_500.suggestion</source>
+        <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="puQxkhC" resname="title.edit_profile">
+        <source>title.edit_profile</source>
+        <target>Edit Profile</target>
+      </trans-unit>
+      <trans-unit id="c.8EJ5O" resname="menu.sign_in">
+        <source>menu.sign_in</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="hbOy5v5" resname="article.min_read">
+        <source>article.min_read</source>
+        <target>min read</target>
+      </trans-unit>
+      <trans-unit id="m1uchIv" resname="article.read_more">
+        <source>article.read_more</source>
+        <target>Read more</target>
+      </trans-unit>
+      <trans-unit id="1pbIV60" resname="article.no_articles_found">
+        <source>article.no_articles_found</source>
+        <target>__article.no_articles_found</target>
+      </trans-unit>
+      <trans-unit id="kgGnVUe" resname="menu.articles">
+        <source>menu.articles</source>
+        <target>__menu.articles</target>
+      </trans-unit>
+      <trans-unit id="2IF6qMR" resname="menu.categories">
+        <source>menu.categories</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="yo4f8Kh" resname="menu.tags">
+        <source>menu.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="9VmuaIJ" resname="message.hello">
+        <source>message.hello</source>
+        <target>Hello</target>
+      </trans-unit>
+      <trans-unit id="rrU0GR8" resname="title.change_password">
+        <source>title.change_password</source>
+        <target>Change password</target>
+      </trans-unit>
+      <trans-unit id="wtG.cxy" resname="info.change_password">
+        <source>info.change_password</source>
+        <target>After changing your password, you will be logged out of the application.</target>
+      </trans-unit>
+      <trans-unit id="HLtdhYw" resname="action.save">
+        <source>action.save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="Sw1YADx" resname="menu.change_password">
+        <source>menu.change_password</source>
+        <target>Change password</target>
+      </trans-unit>
+      <trans-unit id="1oHe_Uk" resname="menu.edit_profile">
+        <source>menu.edit_profile</source>
+        <target>Edir profile</target>
+      </trans-unit>
+      <trans-unit id="kKpU1K4" resname="article.categories">
+        <source>article.categories</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="VNOUqrT" resname="article.tags">
+        <source>article.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="6OXZVCH" resname="article.search">
+        <source>article.search</source>
+        <target>Search...</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

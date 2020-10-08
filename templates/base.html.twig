@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('article_rss') }}">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Mukta+Mahee:wght@400;500;600;700&display=swap"
+              rel="stylesheet">
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/simple-line-icons.css') }}" rel="stylesheet">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body class="{% block body_id %}{% endblock %}">
+{% block header %}
+    {{ include('includes/_header.twig') }}
+{% endblock %}
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            {% block body %}
+            <div class="col-lg-8">
+                {% block main %}
+                {% endblock %}
+            </div>
+            <div class="col-lg-4">
+{#                {% block sidebar %}#}
+{#                            {{ dump(article) }}#}
+
+{#                    {{ include('includes/_sidebar.twig') }}#}
+{#                {% endblock %}#}
+                {{ article_sidebar() }}
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% block footer %}
+    {{ include('includes/_footer.twig') }}
+{% endblock %}
+</body>
+</html>
