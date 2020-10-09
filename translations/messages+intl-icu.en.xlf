@@ -165,6 +165,14 @@
         <source>article.search</source>
         <target>Search...</target>
       </trans-unit>
+      <trans-unit id="DkZtOOL" resname="rss.title">
+        <source>rss.title</source>
+        <target>Articles RSS</target>
+      </trans-unit>
+      <trans-unit id="ZFPsu41" resname="rss.description">
+        <source>rss.description</source>
+        <target>Most recent articles</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

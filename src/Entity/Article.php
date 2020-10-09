@@ -233,11 +233,6 @@ class Article
         return $this->category;
     }
 
-    /**
-     * Generates the magic method
-     *
-     */
-
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
