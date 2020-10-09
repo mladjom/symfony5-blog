@@ -9,6 +9,14 @@
         {% for article in articles %}
             <item>
                 <title>{{ article.title }}</title>
+                <description>{{ article.content|striptags|length > 200 ? article.content|striptags|slice(0, 200) ~ '...' : article.content|striptags }}</description>
+                <link>{{ url('article_show', {'slug': article.slug}) }}</link>
+                <guid>{{ url('article_show', {'slug': article.slug}) }}</guid>
+                <pubDate>{{ article.createdAt|date(format='r', timezone='GMT') }}</pubDate>
+                <author>{{ article.author.email }}</author>
+                {% for tag in article.tags %}
+                    <category>{{ tag.name }}</category>
+                {% endfor %}
             </item>
         {% endfor %}
 
