@@ -9,27 +9,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Component\Pager\PaginatorInterface;
 
 class ArticleController extends AbstractController
 {
+
     /**
-     * @Route("/", defaults={"_format"="html"}, methods="GET", name="article_index")
-     * @Route("/rss.xml", defaults={"_format"="xml"}, methods="GET", name="article_rss")
+     * @Route("/", defaults={"page": "1", "_format"="html"}, methods="GET", name="article_index")
+     * @Route("/rss.xml", defaults={"page": "1", "_format"="xml"}, methods="GET", name="article_rss")
+     * @Route("/page/{page<[1-9]\d*>}", defaults={"_format"="html"}, methods="GET", name="article_index_paginated")
      */
-    public function index(ArticleRepository $articleRepository, Request $request, PaginatorInterface $paginator, string $_format): Response
+    public function index(Request $request, ArticleRepository $articleRepository, string $_format, int $page): Response
     {
-        // Paginate the results of the query
-        $articles = $paginator->paginate(
-        // Doctrine Query, not results
-            $articleRepository->findAllPublishedOrderedByNewest(),
-            // Define the page parameter
-            $request->query->getInt('page', 1),
-            // Items per page
-            10
-        );
-        return $this->render('article/index.'.$_format.'.twig', [
-            'articles' => $articles,
+        $articles = $articleRepository->findAllPublishedOrderedByNewest($page);
+        return $this->render('article/index.' . $_format . '.twig', [
+            'paginator' => $articles,
         ]);
     }
 

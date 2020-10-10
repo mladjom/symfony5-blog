@@ -240,4 +240,14 @@ class Article
         return $this;
     }
 
+    /**
+     * Generates the magic method
+     *
+     */
+    public function __toString(){
+        // to show the title of the Article in the select
+        return $this->title;
+        // to show the id of the Article in the select
+        // return $this->id;
+    }
 }

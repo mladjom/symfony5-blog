@@ -3,10 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Pagination\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -16,7 +16,6 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class ArticleRepository extends ServiceEntityRepository
 {
-
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Article::class);
@@ -33,12 +32,12 @@ class ArticleRepository extends ServiceEntityRepository
             ->andWhere('a.published =true');
     }
 
-    public function findAllPublishedOrderedByNewest()
+    public function findAllPublishedOrderedByNewest(int $page = 1): Paginator
     {
-        return $this->addIsPublishedQueryBuilder()
+        $qb = $this->addIsPublishedQueryBuilder()
             ->orderBy('a.createdAt', 'DESC')
-            ->getQuery()
-            ->getResult();
+        ;
+        return (new Paginator($qb))->paginate($page);
     }
 
 }
