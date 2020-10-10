@@ -8,7 +8,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
 
 class Paginator
 {
-    private const NUM_ITEMS = 2;
+    private const NUM_ITEMS = 4;
     private $queryBuilder;
     private $currentPage;
     private $pageSize;
