@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body_class 'blog_search' %}
+
+{% block main %}
+
+    <form action="{{ path('article_search') }}" method="get">
+        <div class="form-group">
+            <input name="q"
+                   class="form-control search-field"
+                   placeholder="{{ 'article.search' | trans }}"
+                   autocomplete="off"
+                   value="{{ query }}"
+                   autofocus
+                   data-no-results-message="{{ 'article.search_no_results'|trans }}">
+        </div>
+    </form>
+
+    <div id="results">
+    </div>
+
+{% endblock %}
+
+

@@ -12,14 +12,11 @@
               crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Mukta+Mahee:wght@400;500;600;700&display=swap"
               rel="stylesheet">
-        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/simple-line-icons.css') }}" rel="stylesheet">
         {{ encore_entry_link_tags('app') }}
-        {{ encore_entry_link_tags('search') }}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
-<body class="{% block body_id %}{% endblock %}">
+<body class="{% block body_class %}{% endblock %}">
 {% block header %}
     <header id="topnav">
         <div class="container">
@@ -119,11 +116,10 @@
                 {% endblock %}
             </div>
             <div class="col-lg-4">
-{#                {% block sidebar %}#}
-{#                            {{ dump(article) }}#}
-
-{#                    {{ include('includes/_sidebar.twig') }}#}
-{#                {% endblock %}#}
+{#              {% block sidebar %}#}
+{#                  {{ dump(article) }}#}
+{#                  {{ include('includes/_sidebar.twig') }}#}
+{#              {% endblock %}#}
                 {{ article_sidebar() }}
             </div>
             {% endblock %}
@@ -151,6 +147,7 @@
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
     {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('search') }}
 {% endblock %}
 </body>
 </html>

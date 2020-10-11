@@ -26,7 +26,7 @@
             </div>
             <div class="post-content">
                 <p>
-                    {{ article.content|striptags|length > 278 ? article.content|striptags|slice(0, 278) ~ '...' : article.content|striptags }}
+                    {{ article.content|striptags|slice(0,278)|raw }}
                 </p>
             </div>
             <div class="text-center">
@@ -52,47 +52,65 @@
     {% if paginator.hasToPaginate %}
         <nav class="navigation pt-5">
             <ul class="pagination  d-flex justify-content-center mt-3">
+                {% if paginator.lastPage > 1 %}
+                    {% set nearbyPagesLimit = 4 %}
 
-                {% if paginator.hasPreviousPage %}
-                    <li class="first">
-                        <a href="{{ path('article_index_paginated', {page: '1'}) }}" rel="first">
-                            <i class="icon-control-rewind icons"></i>
-                        </a>
-                    </li>
-                    <li class="prev">
-                        <a href="{{ path('article_index_paginated', {page: paginator.previousPage}) }}" rel="previous">
-                            <i class="icon-arrow-left icons"></i>
-                        </a>
-                    </li>
-                {% endif %}
-
-                {% for i in 1..paginator.lastPage %}
-                    {% if i == paginator.currentPage %}
-                        <li class="active">
-                            <span>{{ i }} </span>
+                    {% if paginator.hasPreviousPage %}
+                        <li class="first">
+                            <a href="{{ path('article_index_paginated', {page: '1'}) }}" rel="first">
+                                <i class="icon-control-rewind icons"></i>
+                            </a>
                         </li>
-                    {% else %}
-                        <li>
-                            <a href="{{ path('article_index_paginated', {page: i}) }}">
-                                {{ i }}
+                        <li class="prev">
+                            <a href="{{ path('article_index_paginated', {page: paginator.previousPage}) }}"
+                               rel="previous">
+                                <i class="icon-arrow-left icons"></i>
                             </a>
                         </li>
                     {% endif %}
-                {% endfor %}
 
-                {% if paginator.hasNextPage %}
-                    <li class="next">
-                        <a href="{{ path('article_index_paginated', {page: paginator.nextPage}) }}" rel="next">
-                            <i class="icon-arrow-right icons"></i>
-                        </a>
-                    </li>
-                    <li class="last">
-                        <a href="{{ path('article_index_paginated', {page: paginator.lastPage}) }}" rel="Last">
-                            <i class="icon-control-forward icons"></i>
-                        </a>
-                    </li>
+                    {% for i in 1..paginator.lastPage %}
+                        {% if 0 == (paginator.currentPage - nearbyPagesLimit) - loop.index %}
+                            {# dot before #}
+                            <li class="disabled">
+                                <span class="">...</span>
+                            </li>
+                        {% elseif 0 == (paginator.currentPage + nearbyPagesLimit) - loop.index %}
+                            {# dot after #}
+                            <li class="disabled">
+                                <span class="">...</span>
+                            </li>
+                        {% elseif 0 < (paginator.currentPage - nearbyPagesLimit) - loop.index %}
+                            {# hide all before #}
+                        {% elseif 0 > (paginator.currentPage + nearbyPagesLimit) - loop.index %}
+                            {# hide all after #}
+                        {% elseif i == paginator.currentPage %}
+                            <li class="active">
+                                <span>{{ i }} </span>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('article_index_paginated', {page: i}) }}">
+                                    {{ i }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if paginator.hasNextPage %}
+                        <li class="next">
+                            <a href="{{ path('article_index_paginated', {page: paginator.nextPage}) }}" rel="next">
+                                <i class="icon-arrow-right icons"></i>
+                            </a>
+                        </li>
+                        <li class="last">
+                            <a href="{{ path('article_index_paginated', {page: paginator.lastPage}) }}" rel="Last">
+                                <i class="icon-control-forward icons"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+
                 {% endif %}
-
             </ul>
         </nav>
     {% endif %}

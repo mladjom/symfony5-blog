@@ -27,6 +27,37 @@ class ArticleController extends AbstractController
     }
 
     /**
+     * @Route("/article/search", methods="GET", name="article_search")
+     */
+    public function search(Request $request, ArticleRepository $article): Response
+    {
+        $query = $request->query->get('q', '');
+        $limit = $request->query->get('l', 10);
+
+        if (!$request->isXmlHttpRequest()) {
+            return $this->render('article/search.html.twig', ['query' => $query]);
+        }
+
+        $foundArticles = $article->findBySearchQuery($query, $limit);
+
+        $results = [];
+        foreach ($foundArticles as $article) {
+            $content = strip_tags($article->getContent());
+            $results[] = [
+                'title' => htmlspecialchars($article->getTitle(), ENT_COMPAT | ENT_HTML5),
+                'date' => $article->getCreatedAt()->format('M d, Y'),
+                'published' => $article->getPublished(),
+                'author' => htmlspecialchars($article->getAuthor()->getName(), ENT_COMPAT | ENT_HTML5),
+                'content' => htmlspecialchars($content, ENT_COMPAT | ENT_HTML5),
+                'url' => $this->generateUrl('article_show', ['slug' => $article->getSlug()]),
+            ];
+        }
+
+        return $this->json($results);
+    }
+
+
+    /**
      * @Route("/article/{slug}", name="article_show", methods={"GET"})
      */
     public function show(Article $article): Response
@@ -60,7 +91,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
+     * @Route("/article/{id}/edit", name="article_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Article $article): Response
     {

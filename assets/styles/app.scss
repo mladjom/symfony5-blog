@@ -939,17 +939,8 @@ textarea.form-control {
       color: #ffffff;
     }
   }
-
   li > {
     a {
-      &:hover, &:focus {
-        background-color: $primary;
-        border-color: $primary;
-        color: #ffffff;
-      }
-    }
-
-    span {
       &:hover, &:focus {
         background-color: $primary;
         border-color: $primary;

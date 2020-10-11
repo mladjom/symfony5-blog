@@ -1,12 +1,17 @@
 <div class="widget widget_search">
-    <form>
-        <input class="form-control js-search-input" type="search" placeholder="{{ 'article.search' | trans }}">
-        <button class="search-button" type="submit">
-            <span class="icon-magnifier icons"></span>
-        </button>
+    <form action="{{ path('article_search') }}" method="get">
+        <input name="q"
+                class="form-control js-search-input search-field"
+               type="search"
+               placeholder="{{ 'article.search' | trans }}"
+               autocomplete="off"
+               value=""
+               autofocus
+               data-no-results-message="{{ 'article.search_no_results'|trans }}">
     </form>
-    <div class="js-search-results"></div>
+{#    <div class="js-search-results results" id="results"></div>#}
 </div>
+
 <div class="widget widget_categories">
     <div class="widget-title">
         {{ 'article.categories' | trans }}
@@ -31,9 +36,9 @@
     <div class="tagcloud">
         {% for tag in tags %}
             <a href="#">
-                {{ tag.name }}
+                {{ tag.name }}  {{ tag.articles | length }}
             </a>
         {% endfor %}
     </div>
 </div>
-{{ dump(categories) }}
+{{ dump(tags) }}

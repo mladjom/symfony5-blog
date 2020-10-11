@@ -34,7 +34,7 @@ class ArticleCrudController extends AbstractCrudController
             // (none by default, so you can manage all instances of the entity)
             ->setEntityPermission('ROLE_ADMIN')
             ->setDateFormat('d/m/Y')
-            ->setSearchFields(['title', 'content'])
+           // ->setSearchFields(['title', 'content'])
             ->setDefaultSort(['createdAt'=>'DESC'])
             ;
     }

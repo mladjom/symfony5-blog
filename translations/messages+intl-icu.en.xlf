@@ -173,6 +173,10 @@
         <source>rss.description</source>
         <target>Most recent articles</target>
       </trans-unit>
+      <trans-unit id="ebBvoqy" resname="article.search_no_results">
+        <source>article.search_no_results</source>
+        <target>No results found</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

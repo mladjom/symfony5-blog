@@ -11,7 +11,7 @@ use Twig\TwigFunction;
 use Psr\Container\ContainerInterface;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 
-class AppExtension extends AbstractExtension implements ServiceSubscriberInterface
+class SidebarExtension extends AbstractExtension implements ServiceSubscriberInterface
 {
     private $container;
 
@@ -29,17 +29,17 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
 
     public function getArticleSidebar(Environment $twig)
     {
-        $articleRepository = $this->container->get(ArticleRepository::class);
-        $archive = $articleRepository->findAllPublishedOrderedByNewest();
+//        $articleRepository = $this->container->get(ArticleRepository::class);
+//        $archive = $articleRepository->findAllPublishedOrderedByNewest();
 
         $categoryRepository = $this->container->get(CategoryRepository::class);
         $category = $categoryRepository->findAll();
 
-        $tagRepository = $this->container->get(CategoryRepository::class);
+        $tagRepository = $this->container->get(TagRepository::class);
         $tag = $tagRepository->findAll();
 
-        return $twig->render('/includes/_sidebar.twig', [
-            'archive' => $archive,
+        return $twig->render('/includes/_sidebar.html.twig', [
+            //'archive' => $archive,
             'categories' => $category,
             'tags' => $tag,
         ]);
@@ -52,28 +52,5 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
             TagRepository::class,
         ];
     }
-
-
-//    public function getFilters(): array
-//    {
-//        return [
-//            // If your filter generates SAFE HTML, you should add a third
-//            // parameter: ['is_safe' => ['html']]
-//            // Reference: https://twig.symfony.com/doc/2.x/advanced.html#automatic-escaping
-//            new TwigFilter('filter_name', [$this, 'doSomething']),
-//        ];
-//    }
-//
-//    public function getFunctions(): array
-//    {
-//        return [
-//            new TwigFunction('function_name', [$this, 'doSomething']),
-//        ];
-//    }
-//
-//    public function doSomething($value)
-//    {
-//        // ...
-//    }
 
 }

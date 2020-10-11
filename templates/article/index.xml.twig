@@ -6,10 +6,10 @@
         <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
         <link>{{ url('article_index') }}</link>
 
-        {% for article in articles %}
+        {% for article in paginator.results %}
             <item>
                 <title>{{ article.title }}</title>
-                <description>{{ article.content|striptags|length > 200 ? article.content|striptags|slice(0, 200) ~ '...' : article.content|striptags }}</description>
+                <description>{{ article.content|striptags|raw|nl2br|slice(0,278) }}</description>
                 <link>{{ url('article_show', {'slug': article.slug}) }}</link>
                 <guid>{{ url('article_show', {'slug': article.slug}) }}</guid>
                 <pubDate>{{ article.createdAt|date(format='r', timezone='GMT') }}</pubDate>
