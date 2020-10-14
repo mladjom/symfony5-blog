@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.edit_profile'|trans }}{% endblock %}
+
+{% block main %}
+        <h1 class="page-title text-center mb-5">{{ 'title.edit_profile'|trans }}</h1>
+
+        {# Debug validation#}
+        {#  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-custom btn-block mt-3">
+            {{ 'action.save'|trans }}
+        </button>
+        {{ form_end(form) }}
+{% endblock %}
+{% block sidebar %}
+
+    {% include('profile/_widget.html.twig') %}
+
+    {{ parent() }}
+
+{% endblock %}

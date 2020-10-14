@@ -13,12 +13,15 @@ namespace App\Controller;
 
 use App\Form\Type\ChangePasswordType;
 use App\Form\UserType;
+use App\Entity\Article;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Service\UploaderHelper;
 
 /**
  * Controller used to manage current user.
@@ -27,12 +30,25 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * @IsGranted("ROLE_USER")
  *
  */
-class UserController extends AbstractController
+class ProfileController extends AbstractController
 {
+    /**
+     * @Route("/", methods="GET", name="user_profile")
+     */
+    public function index(Request $request ): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('profile/index.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+
     /**
      * @Route("/edit", methods="GET|POST", name="user_edit")
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request, EntityManagerInterface $em, UploaderHelper $uploaderHelper): Response
     {
         $user = $this->getUser();
 
@@ -40,14 +56,19 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
 
+            $uploadedFile = $form['imageFile']->getData();
+            if ($uploadedFile) {
+                $newFilename = $uploaderHelper->uploadImage($uploadedFile);
+                $user->setImageFile($newFilename);
+            }
+            $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'user.updated_successfully');
 
             return $this->redirectToRoute('user_edit');
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('profile/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
@@ -71,8 +92,30 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('user/change_password.html.twig', [
+        return $this->render('profile/change_password.html.twig', [
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/articles", name="user_articles")
+     */
+    public function userArticles()
+    {
+        if ($this->getUser()) {
+            $user = $this->getUser();
+            $articles = $this->getDoctrine()->getRepository(Article::class)
+                ->findBy([
+                    'author' => $user
+                ]);
+
+
+
+            return $this->render('profile/articles.html.twig', [
+                'articles' => $articles,
+            ]);
+        }
+        return $this->redirectToRoute('login');
+    }
+
 }

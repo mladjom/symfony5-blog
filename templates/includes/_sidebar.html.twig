@@ -9,7 +9,6 @@
                autofocus
                data-no-results-message="{{ 'article.search_no_results'|trans }}">
     </form>
-{#    <div class="js-search-results results" id="results"></div>#}
 </div>
 
 <div class="widget widget_categories">
@@ -17,7 +16,7 @@
         {{ 'article.categories' | trans }}
     </div>
     <ul>
-        {% for category in categories | sort((a, b) => a.name <=> b.name) %}
+        {% for category in categories %}
             <li>
                 <a href="#">
                     {{ category.name }}
@@ -36,7 +35,8 @@
     <div class="tagcloud">
         {% for tag in tags %}
             <a href="#">
-                {{ tag.name }}  {{ tag.articles | length }}
+                {{ tag.name }}
+{#                {{ tag.articles | length }}#}
             </a>
         {% endfor %}
     </div>

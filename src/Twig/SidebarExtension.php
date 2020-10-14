@@ -33,7 +33,7 @@ class SidebarExtension extends AbstractExtension implements ServiceSubscriberInt
 //        $archive = $articleRepository->findAllPublishedOrderedByNewest();
 
         $categoryRepository = $this->container->get(CategoryRepository::class);
-        $category = $categoryRepository->findAll();
+        $category = $categoryRepository->findAllOrderedByName();
 
         $tagRepository = $this->container->get(TagRepository::class);
         $tag = $tagRepository->findAll();

@@ -13,17 +13,9 @@
         <source>menu.homepage</source>
         <target>Home</target>
       </trans-unit>
-      <trans-unit id="tBiciyR" resname="menu.test">
-        <source>menu.test</source>
-        <target>__menu.test</target>
-      </trans-unit>
       <trans-unit id="wvvYSw_" resname="menu.admin">
         <source>menu.admin</source>
         <target>Admin</target>
-      </trans-unit>
-      <trans-unit id="rjDqmQR" resname="menu.user">
-        <source>menu.user</source>
-        <target>User</target>
       </trans-unit>
       <trans-unit id="wBTFKFR" resname="menu.logout">
         <source>menu.logout</source>
@@ -115,11 +107,11 @@
       </trans-unit>
       <trans-unit id="1pbIV60" resname="article.no_articles_found">
         <source>article.no_articles_found</source>
-        <target>__article.no_articles_found</target>
+        <target>No articles found</target>
       </trans-unit>
       <trans-unit id="kgGnVUe" resname="menu.articles">
         <source>menu.articles</source>
-        <target>__menu.articles</target>
+        <target>Articles</target>
       </trans-unit>
       <trans-unit id="2IF6qMR" resname="menu.categories">
         <source>menu.categories</source>
@@ -149,10 +141,6 @@
         <source>menu.change_password</source>
         <target>Change password</target>
       </trans-unit>
-      <trans-unit id="1oHe_Uk" resname="menu.edit_profile">
-        <source>menu.edit_profile</source>
-        <target>Edir profile</target>
-      </trans-unit>
       <trans-unit id="kKpU1K4" resname="article.categories">
         <source>article.categories</source>
         <target>Categories</target>
@@ -176,6 +164,30 @@
       <trans-unit id="ebBvoqy" resname="article.search_no_results">
         <source>article.search_no_results</source>
         <target>No results found</target>
+      </trans-unit>
+      <trans-unit id="XSS5BT8" resname="menu.profile">
+        <source>menu.profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="0oxktxZ" resname="menu.user_articles">
+        <source>menu.user_articles</source>
+        <target>Articles</target>
+      </trans-unit>
+      <trans-unit id="iAVZLT3" resname="menu.user_profile">
+        <source>menu.user_profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="bbLqIAR" resname="menu.user_edit">
+        <source>menu.user_edit</source>
+        <target>Edit profile</target>
+      </trans-unit>
+      <trans-unit id="QEnBc0X" resname="title.user_profile">
+        <source>title.user_profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="JeygZ4h" resname="action.register">
+        <source>action.register</source>
+        <target>Register</target>
       </trans-unit>
     </body>
   </file>

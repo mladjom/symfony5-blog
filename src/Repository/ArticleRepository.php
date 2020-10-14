@@ -58,7 +58,7 @@ class ArticleRepository extends ServiceEntityRepository
 
         foreach ($searchTerms as $key => $term) {
             $qb
-                ->orWhere('a.title LIKE :t_'.$key)
+                ->andWhere('a.title LIKE :t_'.$key)
                 ->orWhere('a.content LIKE :t_'.$key)
                 ->setParameter('t_'.$key, '%'.$term.'%')
             ;

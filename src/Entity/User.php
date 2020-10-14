@@ -68,6 +68,11 @@ class User implements UserInterface
      */
     private $about;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageFile;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -268,6 +273,18 @@ class User implements UserInterface
     public function setAbout(?string $about): self
     {
         $this->about = $about;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?string
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?string $imageFile): self
+    {
+        $this->imageFile = $imageFile;
 
         return $this;
     }

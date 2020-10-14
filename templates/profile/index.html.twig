@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.name }} - {{ 'title.user_profile'|trans }}{% endblock %}
+
+{% block main %}
+    <div class="widget">
+        <div class="widget-title">{{ user.name }}</div>
+
+        <div class="widget-profile">
+{#            <img src="{{ uploaded_asset(user.imageFile) }}"#}
+{#                 alt="{{ user.name }}" class="rounded-circle">#}
+
+            <p>{{ user.about}}</p>
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a href="" class="btn btn-outline-custom">
+                        {{ user.articles | length }} Articles
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="" class="btn btn-outline-custom">
+                        {{ user.comments | length }} Comments
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {{ dump(user) }}
+
+{% endblock %}
+{% block sidebar %}
+
+    {% include('profile/_widget.html.twig') %}
+
+    {{ parent() }}
+
+{% endblock %}

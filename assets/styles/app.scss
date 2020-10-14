@@ -645,7 +645,9 @@ h1, h2, h3, h4, h5, h6 {
   ul li a:hover, ol li a:hover {
     color: $primary;
   }
-
+  ul li a.btn:hover, ol li a.btn:hover {
+    color: #fff;
+  }
   select {
     width: 100%;
     box-shadow: none;
@@ -714,9 +716,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 24px;
 }
 
-/* About Widget */
+/*============== 11. Profile ===============*/
 
-.about-widget {
+.widget-profile {
   text-align: center;
 
   img {

@@ -76,8 +76,8 @@
                                         </li>
                                     {% endif %}
                                     <li>
-                                        <a href="{{ path('user_edit') }}">
-                                            <i class="icon-user icons" aria-hidden="true"></i> {{ 'menu.user'|trans }}
+                                        <a href="{{ path('user_profile') }}">
+                                            <i class="icon-user icons" aria-hidden="true"></i> {{ 'menu.profile'|trans }}
                                         </a>
                                     </li>
                                     <li>
@@ -116,11 +116,9 @@
                 {% endblock %}
             </div>
             <div class="col-lg-4">
-{#              {% block sidebar %}#}
-{#                  {{ dump(article) }}#}
-{#                  {{ include('includes/_sidebar.twig') }}#}
-{#              {% endblock %}#}
-                {{ article_sidebar() }}
+              {% block sidebar %}
+                  {{ article_sidebar() }}
+              {% endblock %}
             </div>
             {% endblock %}
         </div>
