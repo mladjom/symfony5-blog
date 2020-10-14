@@ -36,9 +36,9 @@ class UserType extends AbstractType
             ])
         ];
 //        if (!$isEdit || !$user->getImageFile()) {
-            $imageConstraints[] = new NotNull([
-                'message' => 'Please upload an image',
-            ]);
+//            $imageConstraints[] = new NotNull([
+//                'message' => 'Please upload an image',
+//            ]);
 //        }
         $builder
             ->add('email', EmailType::class, [

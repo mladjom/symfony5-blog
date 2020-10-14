@@ -15,13 +15,15 @@
 {% block body_class 'error-page' %}
 
 {% block body %}
-    <h1 class="text-danger"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
-        {{ 'http_error.name'|trans({ '%status_code%': 403 }) }}
-    </h1>
-    <h4>
-        {{ 'http_error_403.description'|trans }}
-    </h4>
-    <p class="text-muted">
-        {{ 'http_error_403.suggestion'|trans({ '%url%': path('homepage') })|raw }}
-    </p>
+    <div class="col-lg-12 text-center">
+        <h1 class="text-danger"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            {{ 'http_error.name'|trans({ '%status_code%': 403 }) }}
+        </h1>
+        <h4>
+            {{ 'http_error_403.description'|trans }}
+        </h4>
+        <p class="text-muted">
+            {{ 'http_error_403.suggestion'|trans({ '%url%': path('homepage') })|raw }}
+        </p>
+    </div>
 {% endblock %}

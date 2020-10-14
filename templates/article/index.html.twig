@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index{% endblock %}
+{% block title %}{{ 'Article Index'|trans }}{% endblock %}
 
 {% block main %}
 
@@ -18,9 +18,9 @@
                         {{ article.createdAt ? article.createdAt|date('m d, Y') : '' }}
                     </span>
                     <i class="icon-star icons"></i>
-                    <span class="reading-time" title="Estimated read time">
+                    <span class="reading-time" title="{{ 'Estimated read time'|trans }}">
                         {% set numberOfWords = article.content|split(' ')|length / 200 %}
-                        {{ numberOfWords | round(0, 'ceil') }} {{ 'article.min_read' | trans }}
+                        {{ numberOfWords | round(0, 'ceil') }} {{ 'min read' | trans }}
                     </span>
                 </span>
             </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="text-center">
                 <a href="{{ path('article_show', {slug: article.slug}) }}" class="btn btn-outline-custom">
-                    {{ 'article.read_more' | trans }}
+                    {{ 'Read more' | trans }}
                     <i class="mdi mdi-arrow-right"></i>
                 </a>
             </div>
@@ -46,7 +46,7 @@
         {#        <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
 
     {% else %}
-        <div class="well">{{ 'article.no_articles_found' | trans }}</div>
+        <div class="well">{{ 'No articles found' | trans }}</div>
     {% endfor %}
 
     {% if paginator.hasToPaginate %}

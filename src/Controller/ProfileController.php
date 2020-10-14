@@ -14,6 +14,7 @@ namespace App\Controller;
 use App\Form\Type\ChangePasswordType;
 use App\Form\UserType;
 use App\Entity\Article;
+use App\Service\UploaderHelper;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Service\UploaderHelper;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Controller used to manage current user.
@@ -44,11 +45,15 @@ class ProfileController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/edit", methods="GET|POST", name="user_edit")
      */
-    public function edit(Request $request, EntityManagerInterface $em, UploaderHelper $uploaderHelper): Response
+    public function edit(
+        Request $request,
+        EntityManagerInterface $em,
+        UploaderHelper $uploaderHelper,
+        TranslatorInterface $translator
+    ): Response
     {
         $user = $this->getUser();
 
@@ -63,7 +68,7 @@ class ProfileController extends AbstractController
                 $user->setImageFile($newFilename);
             }
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'user.updated_successfully');
+            $this->addFlash('success', $translator->trans('Profile Update Successfully'));
 
             return $this->redirectToRoute('user_edit');
         }
@@ -108,8 +113,6 @@ class ProfileController extends AbstractController
                 ->findBy([
                     'author' => $user
                 ]);
-
-
 
             return $this->render('profile/articles.html.twig', [
                 'articles' => $articles,

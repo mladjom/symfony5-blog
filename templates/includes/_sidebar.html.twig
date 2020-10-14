@@ -3,17 +3,17 @@
         <input name="q"
                 class="form-control js-search-input search-field"
                type="search"
-               placeholder="{{ 'article.search' | trans }}"
+               placeholder="{{ 'Search...' | trans }}"
                autocomplete="off"
                value=""
                autofocus
-               data-no-results-message="{{ 'article.search_no_results'|trans }}">
+               data-no-results-message="{{ 'No articles found'|trans }}">
     </form>
 </div>
 
 <div class="widget widget_categories">
     <div class="widget-title">
-        {{ 'article.categories' | trans }}
+        {{ 'Category' | trans }}
     </div>
     <ul>
         {% for category in categories %}
@@ -30,7 +30,7 @@
 </div>
 <div class="widget widget_tag_cloud">
     <div class="widget-title">
-        {{ 'article.tags' | trans }}
+        {{ 'Tags' | trans }}
     </div>
     <div class="tagcloud">
         {% for tag in tags %}

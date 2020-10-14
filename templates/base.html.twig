@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Welcome!{% endblock %}</title>
     <meta name="description" content="{% block description %}Description TODO!{% endblock %}">
-    <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('article_rss') }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ 'Articles RSS'|trans }}" href="{{ path('article_rss') }}">
     {% block stylesheets %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
               integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -39,24 +39,24 @@
                 <ul class="navigation-menu">
                     {% block header_navigation_links %}
                         <li>
-                            <a href="{{ path('article_index') }}">
-                                {{ 'menu.homepage'|trans }}
+                            <a href="{{ path('homepage') }}">
+                                {{ 'Homepage'|trans }}
                             </a>
                         </li>
                         <li class="has-submenu">
                             <a href="{{ path('article_index') }}">
-                                {{ 'menu.articles'|trans }}
+                                {{ 'Articles'|trans }}
                             </a>
                             <span class="menu-arrow"></span>
                             <ul class="submenu">
                                 <li>
                                     <a href="{{ path('article_index') }}">
-                                        {{ 'menu.categories'|trans }}
+                                        {{ 'Categories'|trans }}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ path('article_index') }}">
-                                        {{ 'menu.tags'|trans }}
+                                        {{ 'Tags'|trans }}
                                     </a>
                                 </li>
                             </ul>
@@ -64,25 +64,25 @@
                         {% if app.user %}
                             <li class="has-submenu">
                                 <a href="#">
-                                    {{ 'message.hello'|trans }} {{ app.user.name }}
+                                    {{ 'Hello'|trans }} {{ app.user.name }}
                                 </a>
                                 <span class="menu-arrow"></span>
                                 <ul class="submenu">
                                     {% if is_granted('ROLE_ADMIN') %}
                                         <li>
                                             <a href="{{ path('admin') }}">
-                                                <i class="icon-speedometer icons" aria-hidden="true"></i>  {{ 'menu.admin'|trans }}
+                                                <i class="icon-speedometer icons" aria-hidden="true"></i>  {{ 'Admin'|trans }}
                                             </a>
                                         </li>
                                     {% endif %}
                                     <li>
                                         <a href="{{ path('user_profile') }}">
-                                            <i class="icon-user icons" aria-hidden="true"></i> {{ 'menu.profile'|trans }}
+                                            <i class="icon-user icons" aria-hidden="true"></i> {{ 'Profile'|trans }}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ path('app_logout') }}">
-                                            <i class="icon-logout icons" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
+                                            <i class="icon-logout icons" aria-hidden="true"></i> {{ 'Logout'|trans }}
                                         </a>
                                     </li>
                                 </ul>
@@ -90,12 +90,12 @@
                         {% else %}
                             <li>
                                 <a href="{{ path('app_login') }}">
-                                    <i class="icon-login icons" aria-hidden="true"></i> {{ 'menu.sign_in'|trans }}
+                                    <i class="icon-login icons" aria-hidden="true"></i> {{ 'Sign in'|trans }}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('app_register') }}">
-                                    <i class="icon-user-following icons" aria-hidden="true"></i> {{ 'menu.register'|trans }}
+                                    <i class="icon-user-following icons" aria-hidden="true"></i> {{ 'Register'|trans }}
                                 </a>
                             </li>
                         {% endif %}
@@ -113,6 +113,7 @@
             {% block body %}
             <div class="col-lg-8">
                 {% block main %}
+                    {{ include('default/_flash_messages.html.twig') }}
                 {% endblock %}
             </div>
             <div class="col-lg-4">

@@ -5,54 +5,6 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="pcWhXux" resname="homepage">
-        <source>homepage</source>
-        <target>Homepage</target>
-      </trans-unit>
-      <trans-unit id="UoOv6mx" resname="menu.homepage">
-        <source>menu.homepage</source>
-        <target>Home</target>
-      </trans-unit>
-      <trans-unit id="wvvYSw_" resname="menu.admin">
-        <source>menu.admin</source>
-        <target>Admin</target>
-      </trans-unit>
-      <trans-unit id="wBTFKFR" resname="menu.logout">
-        <source>menu.logout</source>
-        <target>Logout</target>
-      </trans-unit>
-      <trans-unit id="1slVsoT" resname="menu.register">
-        <source>menu.register</source>
-        <target>Register</target>
-      </trans-unit>
-      <trans-unit id="S92egy5" resname="title.sign_in">
-        <source>title.sign_in</source>
-        <target>Sign in</target>
-      </trans-unit>
-      <trans-unit id="Y7ajNNN" resname="placeholder.email">
-        <source>placeholder.email</source>
-        <target>Email</target>
-      </trans-unit>
-      <trans-unit id="xgYhRkc" resname="placeholder.password">
-        <source>placeholder.password</source>
-        <target>Password</target>
-      </trans-unit>
-      <trans-unit id="B0loISu" resname="label.remember_me">
-        <source>label.remember_me</source>
-        <target>Remember me</target>
-      </trans-unit>
-      <trans-unit id="z2pPSYV" resname="action.sign_in">
-        <source>action.sign_in</source>
-        <target>Sign in</target>
-      </trans-unit>
-      <trans-unit id="Bn6yTIX" resname="action.forgot_password">
-        <source>action.forgot_password</source>
-        <target>Forgot your password?</target>
-      </trans-unit>
-      <trans-unit id="cD8eh30" resname="action.no_account">
-        <source>action.no_account</source>
-        <target>Don't have an account?</target>
-      </trans-unit>
       <trans-unit id="DF34uM2" resname="http_error.name">
         <source>http_error.name</source>
         <target>Error {status_code, number}!</target>
@@ -89,105 +41,129 @@
         <source>http_error_500.suggestion</source>
         <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
       </trans-unit>
-      <trans-unit id="puQxkhC" resname="title.edit_profile">
-        <source>title.edit_profile</source>
-        <target>Edit Profile</target>
-      </trans-unit>
-      <trans-unit id="c.8EJ5O" resname="menu.sign_in">
-        <source>menu.sign_in</source>
-        <target>Sign in</target>
-      </trans-unit>
-      <trans-unit id="hbOy5v5" resname="article.min_read">
-        <source>article.min_read</source>
-        <target>min read</target>
-      </trans-unit>
-      <trans-unit id="m1uchIv" resname="article.read_more">
-        <source>article.read_more</source>
-        <target>Read more</target>
-      </trans-unit>
-      <trans-unit id="1pbIV60" resname="article.no_articles_found">
-        <source>article.no_articles_found</source>
-        <target>No articles found</target>
-      </trans-unit>
-      <trans-unit id="kgGnVUe" resname="menu.articles">
-        <source>menu.articles</source>
-        <target>Articles</target>
-      </trans-unit>
-      <trans-unit id="2IF6qMR" resname="menu.categories">
-        <source>menu.categories</source>
-        <target>Categories</target>
-      </trans-unit>
-      <trans-unit id="yo4f8Kh" resname="menu.tags">
-        <source>menu.tags</source>
-        <target>Tags</target>
-      </trans-unit>
-      <trans-unit id="9VmuaIJ" resname="message.hello">
-        <source>message.hello</source>
-        <target>Hello</target>
-      </trans-unit>
-      <trans-unit id="rrU0GR8" resname="title.change_password">
-        <source>title.change_password</source>
-        <target>Change password</target>
-      </trans-unit>
       <trans-unit id="wtG.cxy" resname="info.change_password">
         <source>info.change_password</source>
         <target>After changing your password, you will be logged out of the application.</target>
       </trans-unit>
-      <trans-unit id="HLtdhYw" resname="action.save">
-        <source>action.save</source>
-        <target>Save</target>
+      <trans-unit id="hpWlheT" resname="Please Confirm your Email">
+        <source>Please Confirm your Email</source>
+        <target>Please Confirm your Email</target>
       </trans-unit>
-      <trans-unit id="Sw1YADx" resname="menu.change_password">
-        <source>menu.change_password</source>
-        <target>Change password</target>
+      <trans-unit id="kQWnsB7" resname="Your email address has been verified.">
+        <source>Your email address has been verified.</source>
+        <target>Your email address has been verified.</target>
       </trans-unit>
-      <trans-unit id="kKpU1K4" resname="article.categories">
-        <source>article.categories</source>
-        <target>Categories</target>
+      <trans-unit id="eWlpHS2" resname="Profile Update Successfully">
+        <source>Profile Update Successfully</source>
+        <target>Profile Update Successfully</target>
       </trans-unit>
-      <trans-unit id="VNOUqrT" resname="article.tags">
-        <source>article.tags</source>
-        <target>Tags</target>
+      <trans-unit id="cDHx6Lq" resname="Article Index">
+        <source>Article Index</source>
+        <target>Article Index</target>
       </trans-unit>
-      <trans-unit id="6OXZVCH" resname="article.search">
-        <source>article.search</source>
-        <target>Search...</target>
+      <trans-unit id="Q7rsbFg" resname="Estimated read time">
+        <source>Estimated read time</source>
+        <target>Estimated read time</target>
       </trans-unit>
-      <trans-unit id="DkZtOOL" resname="rss.title">
-        <source>rss.title</source>
+      <trans-unit id="szfJRQD" resname="min read">
+        <source>min read</source>
+        <target>min read</target>
+      </trans-unit>
+      <trans-unit id="g7eUFFw" resname="Read more">
+        <source>Read more</source>
+        <target>Read more</target>
+      </trans-unit>
+      <trans-unit id="R.EDNAp" resname="No articles found">
+        <source>No articles found</source>
+        <target>No articles found</target>
+      </trans-unit>
+      <trans-unit id="QxTdUcC" resname="Articles RSS">
+        <source>Articles RSS</source>
         <target>Articles RSS</target>
       </trans-unit>
-      <trans-unit id="ZFPsu41" resname="rss.description">
-        <source>rss.description</source>
+      <trans-unit id="KLZ35uX" resname="Most recent articles">
+        <source>Most recent articles</source>
         <target>Most recent articles</target>
       </trans-unit>
-      <trans-unit id="ebBvoqy" resname="article.search_no_results">
-        <source>article.search_no_results</source>
-        <target>No results found</target>
+      <trans-unit id="njOR6b8" resname="Homepage">
+        <source>Homepage</source>
+        <target>Homepage</target>
       </trans-unit>
-      <trans-unit id="XSS5BT8" resname="menu.profile">
-        <source>menu.profile</source>
-        <target>Profile</target>
-      </trans-unit>
-      <trans-unit id="0oxktxZ" resname="menu.user_articles">
-        <source>menu.user_articles</source>
+      <trans-unit id="sUrHikb" resname="Articles">
+        <source>Articles</source>
         <target>Articles</target>
       </trans-unit>
-      <trans-unit id="iAVZLT3" resname="menu.user_profile">
-        <source>menu.user_profile</source>
+      <trans-unit id="uLHYlMa" resname="Categories">
+        <source>Categories</source>
+        <target>Categories</target>
+      </trans-unit>
+      <trans-unit id="EzEnW8U" resname="Tags">
+        <source>Tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="GF_NsyJ" resname="Hello">
+        <source>Hello</source>
+        <target>Hello</target>
+      </trans-unit>
+      <trans-unit id="wcIksDz" resname="Admin">
+        <source>Admin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="1pajW90" resname="Profile">
+        <source>Profile</source>
         <target>Profile</target>
       </trans-unit>
-      <trans-unit id="bbLqIAR" resname="menu.user_edit">
-        <source>menu.user_edit</source>
-        <target>Edit profile</target>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Logout</target>
       </trans-unit>
-      <trans-unit id="QEnBc0X" resname="title.user_profile">
-        <source>title.user_profile</source>
-        <target>Profile</target>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Sign in</target>
       </trans-unit>
-      <trans-unit id="JeygZ4h" resname="action.register">
-        <source>action.register</source>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
         <target>Register</target>
+      </trans-unit>
+      <trans-unit id="f1U4Ihn" resname="Search...">
+        <source>Search...</source>
+        <target>Search...</target>
+      </trans-unit>
+      <trans-unit id="qUn0YjB" resname="Change Password">
+        <source>Change Password</source>
+        <target>Change Password</target>
+      </trans-unit>
+      <trans-unit id="FQn1YfJ" resname="Save">
+        <source>Save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id=".sKsD0z" resname="Edit Profile">
+        <source>Edit Profile</source>
+        <target>Edit Profile</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="_TJnqhH" resname="Remember me">
+        <source>Remember me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="G1RbI.r" resname="Don't have an account?">
+        <source>Don't have an account?</source>
+        <target>Don't have an account?</target>
+      </trans-unit>
+      <trans-unit id="r9Jf3xf" resname="Forgot your password?">
+        <source>Forgot your password?</source>
+        <target>Forgot your password?</target>
+      </trans-unit>
+      <trans-unit id="KSwG8AR" resname="Category">
+        <source>Category</source>
+        <target>Category</target>
       </trans-unit>
     </body>
   </file>

@@ -15,6 +15,7 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/", defaults={"page": "1", "_format"="html"}, methods="GET", name="article_index")
+     * @Route("/", defaults={"page": "1", "_format"="html"}, methods="GET", name="homepage")
      * @Route("/rss.xml", defaults={"page": "1", "_format"="xml"}, methods="GET", name="article_rss")
      * @Route("/page/{page<[1-9]\d*>}", defaults={"_format"="html"}, methods="GET", name="article_index_paginated")
      */
