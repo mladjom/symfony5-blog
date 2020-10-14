@@ -12,6 +12,9 @@ git.sh
 /vendor/
 ###< symfony/framework-bundle ###
 
+/public/uploads/
+.idea/
+
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
