@@ -3,12 +3,28 @@
 {% block title %}{{ user.name }} - {{ 'Edit Profile'|trans }}{% endblock %}
 
 {% block main %}
+
     <h1 class="page-title text-center mb-5">{{ 'Edit Profile'|trans }}</h1>
-    {{ parent() }}
 
     {# Debug validation#}
     {#  {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
     {{ form_start(form) }}
+    <div class="row">
+        <div class="col-sm-3">
+            {% if form.vars.data.imageFilename|default %}
+                <img src="{{ uploaded_asset(form.vars.data.imagePath)|imagine_filter('squared_thumbnail_small') }}"
+                     alt="{{ user.name }}" class="rounded-circle" height="100">
+            {% endif %}
+        </div>
+        <div class="col-sm-9">
+            {{ form_row(form.imageFilename, {
+                attr: {
+                    'placeholder': 'Select profile picture'
+                }
+            }) }}
+        </div>
+
+    </div>
     {{ form_widget(form) }}
     <button class="btn btn-custom btn-block mt-3">
         {{ 'Save'|trans }}
@@ -23,3 +39,15 @@
     {{ parent() }}
 
 {% endblock %}
+
+        {% block javascripts %}
+            {{ parent() }}
+            <script>
+                $('.custom-file-input').on('change', function (event) {
+                    var inputFile = event.currentTarget;
+                    $(inputFile).parent()
+                        .find('.custom-file-label')
+                        .html(inputFile.files[0].name);
+                });
+            </script>
+        {% endblock %}

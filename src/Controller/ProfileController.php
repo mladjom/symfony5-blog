@@ -34,6 +34,16 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ProfileController extends AbstractController
 {
     /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
+    /**
      * @Route("/", methods="GET", name="user_profile")
      */
     public function index(Request $request ): Response
@@ -50,14 +60,14 @@ class ProfileController extends AbstractController
      */
     public function edit(
         Request $request,
-        EntityManagerInterface $em,
-        UploaderHelper $uploaderHelper,
-        TranslatorInterface $translator
+        //EntityManagerInterface $em,
+        UploaderHelper $uploaderHelper
     ): Response
     {
         $user = $this->getUser();
 
         $form = $this->createForm(UserType::class, $user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -68,7 +78,7 @@ class ProfileController extends AbstractController
                 $user->setImageFile($newFilename);
             }
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', $translator->trans('Profile Update Successfully'));
+            $this->addFlash('success', $this->translator->trans('Profile Update Successfully'));
 
             return $this->redirectToRoute('user_edit');
         }

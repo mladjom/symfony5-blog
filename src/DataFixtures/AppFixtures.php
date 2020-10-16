@@ -7,13 +7,15 @@ use App\Entity\Tag;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\Comment;
+use App\Service\UploaderHelper;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use function Symfony\Component\String\u;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\File;
 
 class AppFixtures extends Fixture
 {
@@ -37,11 +39,18 @@ class AppFixtures extends Fixture
      */
     private $faker;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger)
+    /**
+     * @var UploaderHelper
+     */
+    private $uploaderHelper;
+
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger, UploaderHelper $uploaderHelper)
     {
         $this->passwordEncoder = $passwordEncoder;
         $this->slugger = $slugger;
         $this->faker = Factory::create();
+        $this->uploaderHelper = $uploaderHelper;
     }
 
     public function load(ObjectManager $manager)
@@ -58,10 +67,23 @@ class AppFixtures extends Fixture
     private function loadUserData(ObjectManager $manager)
     {
         for ($i = 0; $i < 10; ++$i) {
+
             $user = new User();
+
             $user->setEmail($this->faker->email);
             $user->setPassword($this->passwordEncoder->encodePassword($user, 'user123'));
             $user->setName($this->faker->firstName());
+
+            $randomImage = $this->faker->randomElement($this->userImages());
+
+            $fs = new Filesystem();
+            $targetPath = sys_get_temp_dir().'/'.$randomImage;
+            $fs->copy(__DIR__.'/images/'.$randomImage, $targetPath, true);
+            $imageFilename = $this->uploaderHelper
+                ->uploadImage(new File($targetPath));
+
+            $user->setImageFilename($imageFilename);
+
             $user->setAbout($this->faker->sentences(4, true));
             $user->setcreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
             $user->setisVerified($this->faker->boolean);
@@ -83,7 +105,10 @@ class AppFixtures extends Fixture
         $this->users[] = $user;
 
     }
-
+    private function userImages()
+    {
+       return array ('a.jpg','b.jpg','c.jpg');
+    }
     private function loadCategoryData(ObjectManager $manager)
     {
         for ($i = 0; $i < 10; ++$i) {

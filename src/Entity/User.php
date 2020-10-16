@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -71,7 +72,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $imageFile;
+    private $imageFilename;
 
     public function __construct()
     {
@@ -277,16 +278,22 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getImageFile(): ?string
+    public function getImageFilename(): ?string
     {
-        return $this->imageFile;
+        return $this->imageFilename;
     }
 
-    public function setImageFile(?string $imageFile): self
+    public function setImageFilename(?string $imageFilename): self
     {
-        $this->imageFile = $imageFile;
+        $this->imageFilename = $imageFilename;
 
         return $this;
     }
 
+    public function getImagePath()
+    {
+        return UploaderHelper::USER_IMAGE.'/'.$this->getImageFilename();
+    }
+
 }
+

@@ -6,6 +6,7 @@
 parameters:
 
 services:
+    Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -30,3 +31,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Form\:
+        resource: '../src/Form'
+        autowire: true
+        autoconfigure: true

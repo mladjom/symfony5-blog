@@ -3,25 +3,49 @@
 namespace App\Service;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Gedmo\Sluggable\Util\Urlizer;
+use Symfony\Component\Asset\Context\RequestStackContext;
+use Symfony\Component\HttpFoundation\File\File;
 
 class UploaderHelper
 {
+    const USER_IMAGE = 'user_image';
+
     private $uploadsPath;
 
-    public function __construct(string $uploadsPath)
+    public function __construct(string $uploadsPath, RequestStackContext $requestStackContext)
     {
         $this->uploadsPath = $uploadsPath;
+        $this->requestStackContext = $requestStackContext; }
+
+    public function getPublicPath(string $path): string
+    {
+        return $this->requestStackContext
+                ->getBasePath().'/uploads/'.$path;
+
     }
 
-    public function uploadImage(UploadedFile $uploadedFile): string
+    public function uploadImage(File $file): string
     {
-        $destination = $this->uploadsPath.'/user_image';
-        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
-        $uploadedFile->move(
+        $destination = $this->uploadsPath.'/'.self::USER_IMAGE;
+
+        if ($file instanceof UploadedFile) {
+            $originalFilename = $file->getClientOriginalName();
+        } else {
+            $originalFilename = $file->getFilename();
+        }
+        $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
+
+
+        try {
+            $file->move(
             $destination,
             $newFilename
         );
+        } catch (FileException $e) {
+            $logger->critical('Image was not uploaded');
+        }
+
+
         return $newFilename;
     }
 }

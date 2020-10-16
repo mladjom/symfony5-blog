@@ -7,9 +7,8 @@
         <div class="widget-title">{{ user.name }}</div>
 
         <div class="widget-profile">
-{#            <img src="{{ uploaded_asset(user.imageFile) }}"#}
-{#                 alt="{{ user.name }}" class="rounded-circle">#}
-
+            <img src="{{ uploaded_asset(user.imagePath)|imagine_filter('squared_thumbnail_small') }}"
+                 alt="{{ user.name }}" class="rounded-circle">
             <p>{{ user.about}}</p>
             <ul class="list-inline">
                 <li class="list-inline-item">
