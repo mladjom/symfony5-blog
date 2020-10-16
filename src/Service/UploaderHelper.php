@@ -34,17 +34,11 @@ class UploaderHelper
             $originalFilename = $file->getFilename();
         }
         $newFilename = Urlizer::urlize(pathinfo($originalFilename, PATHINFO_FILENAME)).'-'.uniqid().'.'.$file->guessExtension();
-
-
-        try {
+        
             $file->move(
             $destination,
             $newFilename
         );
-        } catch (FileException $e) {
-            $logger->critical('Image was not uploaded');
-        }
-
 
         return $newFilename;
     }
