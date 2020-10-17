@@ -60,7 +60,6 @@ class ProfileController extends AbstractController
      */
     public function edit(
         Request $request,
-        //EntityManagerInterface $em,
         UploaderHelper $uploaderHelper
     ): Response
     {
@@ -72,10 +71,10 @@ class ProfileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $uploadedFile = $form['imageFile']->getData();
+            $uploadedFile = $form['imageFilename']->getData();
             if ($uploadedFile) {
-                $newFilename = $uploaderHelper->uploadImage($uploadedFile);
-                $user->setImageFile($newFilename);
+                $newFilename = $uploaderHelper->uploadImage($uploadedFile, $user->getImageFilename());
+                $user->setImageFilename($newFilename);
             }
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', $this->translator->trans('Profile Update Successfully'));

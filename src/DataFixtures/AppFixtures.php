@@ -73,17 +73,8 @@ class AppFixtures extends Fixture
             $user->setEmail($this->faker->email);
             $user->setPassword($this->passwordEncoder->encodePassword($user, 'user123'));
             $user->setName($this->faker->firstName());
-
-            $randomImage = $this->faker->randomElement($this->userImages());
-
-            $fs = new Filesystem();
-            $targetPath = sys_get_temp_dir().'/'.$randomImage;
-            $fs->copy(__DIR__.'/images/'.$randomImage, $targetPath, true);
-            $imageFilename = $this->uploaderHelper
-                ->uploadImage(new File($targetPath));
-
+            $imageFilename = $this->fakeUploadImage();
             $user->setImageFilename($imageFilename);
-
             $user->setAbout($this->faker->sentences(4, true));
             $user->setcreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
             $user->setisVerified($this->faker->boolean);
@@ -95,6 +86,8 @@ class AppFixtures extends Fixture
         $user->setEmail('admin@site.com');
         $user->setPassword($this->passwordEncoder->encodePassword($user, 'admin123'));
         $user->setName($this->faker->firstName());
+        $imageFilename = $this->fakeUploadImage();
+        $user->setImageFilename($imageFilename);
         $user->setAbout($this->faker->sentences(4, true));
         $user->setcreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
         $user->setisVerified(TRUE);
@@ -105,10 +98,23 @@ class AppFixtures extends Fixture
         $this->users[] = $user;
 
     }
+
+    private function fakeUploadImage(): string
+    {
+        $randomImage = $this->faker->randomElement($this->userImages());
+
+        $fs = new Filesystem();
+        $targetPath = sys_get_temp_dir().'/'.$randomImage;
+        $fs->copy(__DIR__.'/images/'.$randomImage, $targetPath, true);
+        return $this->uploaderHelper
+            ->uploadImage(new File($targetPath), null);
+    }
+    
     private function userImages()
     {
        return array ('a.jpg','b.jpg','c.jpg');
     }
+
     private function loadCategoryData(ObjectManager $manager)
     {
         for ($i = 0; $i < 10; ++$i) {
